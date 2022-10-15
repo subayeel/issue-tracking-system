@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+
+import React, { useState } from "react";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./Components/Global";
+
+import Footer from "./Components/Footer/Footer";
+
+import Navbar from "./Components/Navbar/Navbar";
+
+import Sidebar from "./Components/SideBar/Sidebar"
+import { HomeContainer } from "./Components/HomeComponent/Home.elements";
 
 function App() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const theme = {
+    colors: {
+      primarybg: "#ECEFFF",
+      secondarybg: "#FCFFDF",
+      primaryColor: "#3F9DA7",
+      brownBtnColor: "#835A3A",
+    },
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+       <GlobalStyle />
+
+      <Router>
+        <Sidebar isOpen={isOpen} toggle={toggle} />
+        <Navbar isOpen={isOpen} toggle={toggle} />
+        <Routes>
+          <Route path="/" element={<HomeContainer />} />
+          
+          
+        </Routes>
+        <Outlet />
+        <Footer />
+      </Router>
+    </ThemeProvider>
   );
 }
 
