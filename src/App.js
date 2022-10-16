@@ -1,3 +1,4 @@
+//Routing Componenents
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,15 +8,18 @@ import {
 
 import React, { useState } from "react";
 
+//Adding global theme
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./Components/Global";
 
+//importing components
 import Footer from "./Components/Footer/Footer";
-
 import Navbar from "./Components/Navbar/Navbar";
-
 import Sidebar from "./Components/SideBar/Sidebar"
-import { HomeContainer } from "./Components/HomeComponent/Home.elements";
+import CreateIssue from "./Components/CreateIssue/CreateIssue"
+import CreateProject from "./Components/CreateProject/CreateProject"
+import ProjectBoard from "./Components/ProjectBoard/ProjectBoard"
+
 
 function App() {
 
@@ -26,10 +30,10 @@ function App() {
 
   const theme = {
     colors: {
-      primarybg: "#ECEFFF",
-      secondarybg: "#FCFFDF",
-      primaryColor: "#3F9DA7",
-      brownBtnColor: "#835A3A",
+      primarybg: "#EAEAEA",
+      secondarybg: "#B2B2B2",
+      primaryColor: "#3C4048",
+      secondaryColor: "#00ABB3",
     },
   };
 
@@ -41,7 +45,11 @@ function App() {
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar isOpen={isOpen} toggle={toggle} />
         <Routes>
-          <Route path="/" element={<HomeContainer />} />
+          <Route path="/" element={<ProjectBoard />} />
+          <Route path="/createissue" element={<CreateIssue />} />
+          <Route path="/createproject" element={<CreateProject />} />
+
+
           
           
         </Routes>

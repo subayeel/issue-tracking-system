@@ -75,6 +75,7 @@ export const NavMenu = styled.ul`
   text-align: center;
   list-style: none;
   color: #3c7c90;
+  margin-right: 14px;
 
   @media (max-width: 900px) {
     display: none;

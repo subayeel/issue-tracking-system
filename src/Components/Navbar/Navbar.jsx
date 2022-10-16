@@ -36,6 +36,16 @@ function Navbar({toggle,isOpen}) {
               Home
             </NavLinks>
           </NavItem>
+          <NavItem>
+            <NavLinks to="/createissue">
+              Create Issue
+            </NavLinks>
+          </NavItem>
+          <NavItem>
+            <NavLinks to="/createproject">
+              Create Project
+            </NavLinks>
+          </NavItem>
           
         </NavMenu>
         <Avatar></Avatar>
