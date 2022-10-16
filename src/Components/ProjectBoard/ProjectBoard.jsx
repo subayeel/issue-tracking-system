@@ -53,6 +53,7 @@ var projects = [
     type: "HIGH",
   },
   {
+    assigneeName: "Salman",
     status: "COMPLETED",
     priority: "LOW",
     type: "HIGH",
@@ -60,7 +61,7 @@ var projects = [
 ];
 
 const ProjectBoard = (props) => {
-  const projectAvailable = props.projectAvailable;
+  
   const [item, setItem] = useState(projects);
   function displayProject(project) {
     return (
@@ -79,21 +80,25 @@ const ProjectBoard = (props) => {
     filterItem(priority);
   };
 
+  function compare(a, b) {
+    if (a.assigneeName > b.assigneeName) return 1;
+    if (a.assigneeName < b.assigneeName) return -1;
+    return 0;
+  }
+
   //function to handle filter by assignee name
   const handleAssigneeChange = (e) => {
     var sortOrder = e.target.value;
     // const assigneeName = [...new Set(projects.map((Val) => Val.name))];
     if (sortOrder == "ascending") {
-      var sortedAscending = item.sort((a, b) =>
-        a.assigneeName > b.assigneeName ? 1 : -1
-      );
+      var sortedAscending = item.sort(compare);
 
       setItem(sortedAscending);
       console.log("ascending");
     } else if (sortOrder === "descending") {
       var sortedDescending = item.sort((a, b) =>
-      a.assigneeName < b.assigneeName ? 1 : -1
-    );
+        a.assigneeName < b.assigneeName ? 1 : -1
+      );
       setItem(sortedDescending);
     }
   };
