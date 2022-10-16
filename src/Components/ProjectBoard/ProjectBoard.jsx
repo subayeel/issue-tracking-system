@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //import for image
 import noproject from "../../Images/noproject.svg";
@@ -61,7 +61,6 @@ var projects = [
 ];
 
 const ProjectBoard = (props) => {
-  
   const [item, setItem] = useState(projects);
   function displayProject(project) {
     return (
@@ -91,17 +90,23 @@ const ProjectBoard = (props) => {
     var sortOrder = e.target.value;
     // const assigneeName = [...new Set(projects.map((Val) => Val.name))];
     if (sortOrder == "ascending") {
-      var sortedAscending = item.sort(compare);
+      var sortedAscending = projects.sort(
+        (a, b) => a.assigneeName - b.assigneeName
+      );
 
       setItem(sortedAscending);
       console.log("ascending");
     } else if (sortOrder === "descending") {
-      var sortedDescending = item.sort((a, b) =>
-        a.assigneeName < b.assigneeName ? 1 : -1
+      var sortedDescending = projects.sort(
+        (a, b) => b.assigneeName - a.assigneeName
       );
       setItem(sortedDescending);
     }
   };
+
+  useEffect(() => {
+    setItem(item);
+  }, [projects]);
 
   //function to filter based project priority
   const filterItem = (priority) => {
@@ -159,6 +164,7 @@ const ProjectBoard = (props) => {
               {" "}
               Create Project
             </Button>
+            
           </ProjectBoardWrapper>
         </ProjectBoardContainer>
       </>

@@ -50,6 +50,9 @@ export const IssueCardWrapper = styled(CenterFlexContainer)`
   width: 320px;
   border-radius: 7px;
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.19), 0 4px 4px rgba(0, 0, 0, 0.13);
+  @media screen and (max-width:768px){
+    width: 280px;
+  }
 `;
 
 export const Row = styled.div`

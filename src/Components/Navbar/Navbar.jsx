@@ -20,9 +20,12 @@ function Navbar({toggle,isOpen}) {
   return (
     <Nav>
       <NavbarContainer>
-      <MobileIcon onClick={toggle}>
+      
+        <MobileIcon onClick={toggle}>
           {isOpen ?<FaRegWindowClose/>:<FaBars/>}
         </MobileIcon>
+      
+      
         <NavLogo to="/"> 
           <img
             src="https://seeklogo.com/images/I/its-logo-D8F21DA8FE-seeklogo.com.png"

@@ -22,6 +22,9 @@ export const Line = styled.hr`
   height: 1px;
   width: 100%;
   background-color: black;
+  @media screen and (max-width:768px) {
+    display: none;
+  }
 `;
 
 export const Heading = styled.h1`
@@ -160,7 +163,7 @@ export const SubmitBtn = styled.button`
   background-color: #3C4048;
   border-radius: 28px;
   width: 100%;
-  margin: 14px 0;
+  margin: 7px 0;
   border: none;
   &:hover {
     background-color: black;
@@ -168,7 +171,7 @@ export const SubmitBtn = styled.button`
   }
 
   @media screen and (max-width: 768px) {
-    max-width: 200px;
+    
   }
 `;
 
@@ -281,5 +284,6 @@ margin: 0 auto;
 `
 export const CreateIssueWrapper = styled(CenterFlexContainer)`
 margin: 80px;
+align-items: start;
 flex-direction: column;
 `

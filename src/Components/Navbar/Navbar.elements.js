@@ -58,11 +58,11 @@ export const MobileIcon = styled.div`
   display: none;
 
   @media (max-width: 768px) {
-    display: block;
-    position: absolute;
-    transform: translate(60%, 50%);
-    top: 0;
-    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
     font-size: 1.2rem;
     cursor: pointer;
   }

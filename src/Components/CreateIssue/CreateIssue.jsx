@@ -45,7 +45,7 @@ const CreateIssue = () => {
 
   useEffect(() => {
     if (formErrors.length === 0) {
-      navigate("/")
+      navigate("/");
     }
   }, []);
   const isNumberPrime = (number) => {
@@ -67,6 +67,16 @@ const CreateIssue = () => {
     } else {
       return false;
     }
+  };
+
+  const clearInput = () => {
+    document.getElementById("summary").value = "";
+    document.getElementById("desc").value = "";
+    document.getElementById("tags").value = "";
+    document.getElementById("storyPoint").value = "";
+    document.getElementById("type").value = "";
+    document.getElementById("project").value = "";
+    document.getElementById("assignee").value = "";
   };
 
   const validate = (values) => {
@@ -100,6 +110,7 @@ const CreateIssue = () => {
               <Label>
                 Summary(Max:150 Letter):
                 <InputAreaField
+                  id="summary"
                   name="summary"
                   value={formValues.summary}
                   onChange={handleChange}
@@ -109,6 +120,7 @@ const CreateIssue = () => {
               <Label>
                 Descreption (max length: 500)
                 <InputAreaField
+                  id="desc"
                   name="desc"
                   value={formValues.desc}
                   onChange={handleChange}
@@ -120,6 +132,7 @@ const CreateIssue = () => {
               <Label>
                 Tags:
                 <InputField
+                  id="tags"
                   name="tags"
                   value={formValues.tags}
                   onChange={handleChange}
@@ -129,6 +142,7 @@ const CreateIssue = () => {
               <Label>
                 Story Point:
                 <InputField
+                  id="storyPoint"
                   name="storyPoint"
                   value={formValues.storyPoint}
                   onChange={handleChange}
@@ -140,6 +154,7 @@ const CreateIssue = () => {
               <Label>
                 Issue Type:
                 <SelectField
+                  id="type"
                   value={formValues.issueType}
                   onChange={handleChange}
                   name="issueType"
@@ -157,6 +172,7 @@ const CreateIssue = () => {
               <Label>
                 Project:
                 <SelectField
+                  id="project"
                   value={formValues.project}
                   onChange={handleChange}
                   name="project"
@@ -173,13 +189,14 @@ const CreateIssue = () => {
               <Label>
                 Assignee:
                 <SelectField
+                  id="assignee"
                   value={formValues.assignee}
                   onChange={handleChange}
                   name="assignee"
                   required
                 >
                   <option selected disabled value="">
-                    Select the project
+                    Select the project assignee
                   </option>
                   <option value="Abdul">Abdul</option>
                   <option value="John">John</option>
@@ -192,6 +209,7 @@ const CreateIssue = () => {
 
             <SubmitBtn>Register</SubmitBtn>
           </FormGroup>
+          <SubmitBtn onClick={clearInput}>Reset Form</SubmitBtn>
         </CreateIssueWrapper>
       </CreateIssueContainer>
     </>

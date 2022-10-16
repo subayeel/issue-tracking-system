@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
-import { Link as LinkR } from "react-router-dom";
-import { Link as LinkS } from "react-scroll";
+import { Link } from "react-router-dom";
+
 
 export const SidebarContainer = styled.div`
   display: grid;
   position: fixed;
   align-items: center;
-  background-color: #3c7c90;
+  background-color: #3C4048;
   height: 100%;
   width: 40%;
-  top: 50px;
+  top: 80px;
   right: 0;
   z-index: 999;
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0%")};
-  left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+  left: ${({ isOpen }) => (isOpen ? "0" : "-200%")};
   transition: 0.2s ease-in-out;
 `;
 
@@ -34,6 +34,17 @@ export const Icon = styled.div`
   cursor: pointer;
 `;
 
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 14px;
+  > img {
+    width: 95px;
+  }
+`;
+
 export const SidebarWrapper = styled.div`
   color: #fff;
 `;
@@ -48,9 +59,10 @@ export const SidebarMenu = styled.ul`
   }
 `;
 
-export const SidebarLink = styled(LinkS)`
+export const SidebarLink = styled(Link)`
   display: flex;
   align-items: center;
+  color: #fff;
   justify-content: center;
   font-size: 1.0rem;
   text-decoration: none;
@@ -59,7 +71,7 @@ export const SidebarLink = styled(LinkS)`
   cursor: pointer;
 
   &:hover {
-    color: aliceblue;
+    color: orange;
   }
 `;
 
@@ -67,7 +79,7 @@ export const SidebarBtnWrap = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const SidebarRoute = styled(LinkR)`
+export const SidebarRoute = styled(Link)`
   padding: 10px 22px;
   background-color: #835a3a;
   color: #fff;
