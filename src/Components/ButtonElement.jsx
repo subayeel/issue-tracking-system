@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Button = styled(Link)`
-  border-radius: 0px;
+  border-radius: ${({ round }) => (round ? "14px" : "")};;
   margin: ${({ margin }) => (margin ? margin : "")};
-  background: ${({ primary }) => (primary ? "#007c90" : "#060606")};
+  background: ${({ primary }) => (primary ? "#3C4048" : "#060606")};
   background-color: ${({ bgColor }) => (bgColor ? bgColor : "")};
   white-space: nowrap;
   padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
@@ -21,6 +21,6 @@ export const Button = styled(Link)`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: ${({ primary }) => (primary ? "#0098B1" : "#EC9123")};
+    background: ${({ primary }) => (primary ? "#00ABB3" : "#EC9123")};
   }
 `;
