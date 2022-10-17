@@ -22,44 +22,57 @@ import ProjectBoard from "./Components/ProjectBoard/ProjectBoard";
 
 export const projects = [
   {
+    projectName: "NodeJs",
+    ownerName: "Abdul",
+    startDate: "12/09/2022",
+    endDate: "12/18/2022",
+  },
+];
+export const issues = [
+  {
+    assigneeName: "John",
+    desc: "asdasdad",
+    issueType: "TASK",
+    priority: "MEDIUM",
+    projectName: "apiProject",
+    storyPoint: "2",
+    summary: "asdsad",
+    tags: "#urgent #diy",
+  },
+  {
     assigneeName: "Abdul",
-    status: "DEVELOPMENT",
-    priority: "HIGH",
-    type: "HIGH",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
+    issueType: "TASK",
+    priority: "LOW",
+    projectName: "nodeProject",
+    storyPoint: "3",
+    summary: "Lorem, ipsum dolor sit amet consectetur adipi",
+    tags: "#urgent #diy",
   },
   {
     assigneeName: "Rahul",
-    status: "TO DO",
-    priority: "LOW",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "John",
-    status: "TESTING",
-    priority: "HIGH",
-    type: "HIGH",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
+    issueType: "BUG",
+    priority: "MEDIUM",
+    projectName: "nodeProject",
+    storyPoint: "3",
+    summary: "Lorem, ipsum dolor sit amet consectetur adipi",
+    tags: "#urgent #diy",
   },
   {
     assigneeName: "Chris",
-    status: "TESTING",
-    priority: "MEDIUM",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "Salman",
-    status: "COMPLETED",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
+    issueType: "TASK",
     priority: "HIGH",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "Salman",
-    status: "COMPLETED",
-    priority: "LOW",
-    type: "HIGH",
+    projectName: "nodeProject",
+    storyPoint: "3",
+    summary: "Lorem, ipsum dolor sit amet consectetur adipi",
+    tags: "#urgent #diy",
   },
 ];
 function App() {
-  const [item, setItem] = useState(projects);
+  const [item, setItem] = useState(issues);
+  const [project, setProject] = useState(projects);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);

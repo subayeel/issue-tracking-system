@@ -44,6 +44,8 @@ const CreateIssue = (props) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+
+    
     
   };
 
@@ -61,9 +63,16 @@ const CreateIssue = (props) => {
 
     return true;
   };
+    //add project
+    const addIssue = ()=>{
+
+      var newItem = [...item,formValues]
+      setItem(newItem)
+    }
    useEffect(()=>{
-    if(isSubmit && !formErrors){  
-      setItem()
+    if(isSubmit && !formErrors){ 
+      console.log(formValues) 
+      addIssue()
       navigate("/");
 
     }
@@ -76,6 +85,7 @@ const CreateIssue = (props) => {
     document.getElementById("type").value = "";
     document.getElementById("project").value = "";
     document.getElementById("assignee").value = "";
+    document.getElementById("priority").value = "";
   };
 
   const validate = (values) => {
@@ -162,9 +172,9 @@ const CreateIssue = (props) => {
                   <option selected disabled value="">
                     Select type
                   </option>
-                  <option value="bug">BUG</option>
-                  <option value="task">TASK</option>
-                  <option value="story">STORY</option>
+                  <option value="BUG">BUG</option>
+                  <option value="TASK">TASK</option>
+                  <option value="STORY">STORY</option>
                 </SelectField>
               </Label>
 
@@ -174,7 +184,7 @@ const CreateIssue = (props) => {
                   id="project"
                   value={formValues.project}
                   onChange={handleChange}
-                  name="project"
+                  name="projectName"
                   required
                 >
                   <option selected disabled value="">
@@ -186,12 +196,29 @@ const CreateIssue = (props) => {
                 </SelectField>
               </Label>
               <Label>
+                Priority:
+                <SelectField
+                  id="priority"
+                  value={formValues.priority}
+                  onChange={handleChange}
+                  name="priority"
+                  required
+                >
+                  <option selected disabled value="">
+                    Select the priority
+                  </option>
+                  <option value="LOW">Low</option>
+                  <option value="MEDIUM">Medium</option>
+                  <option value="HIGH">High</option>
+                </SelectField>
+              </Label>
+              <Label>
                 Assignee:
                 <SelectField
                   id="assignee"
                   value={formValues.assignee}
                   onChange={handleChange}
-                  name="assignee"
+                  name="assigneeName"
                   required
                 >
                   <option selected disabled value="">

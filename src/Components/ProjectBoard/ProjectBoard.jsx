@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //import for image
 import noproject from "../../Images/noproject.svg";
 import { Img, ImgWrap } from "../Global";
-import { projects } from "../../App";
+import { issues } from "../../App";
 
 //styled componenets imports
 import {
@@ -26,13 +26,16 @@ const ProjectBoard = (props) => {
   var item = props.item;
   var setItem = props.setItem;
 
-  function displayProject(project) {
+  function displayIssue(issue) {
     return (
       <IssueCard
-        assigneeName={project.assigneeName}
-        status={project.status}
-        priority={project.priority}
-        type={project.type}
+        projectName={issue.projectName}
+        assigneeName={issue.assigneeName}
+        status={issue.status}
+        priority={issue.priority}
+        type={issue.issueType}
+        desc={issue.desc}
+        summary={issue.summary}
       ></IssueCard>
     );
   }
@@ -55,22 +58,61 @@ const ProjectBoard = (props) => {
   useEffect(() => {
     if (priority !== "" && assigneeName !== "") {
       filterItem(priority, assigneeName);
+    } else if (assigneeName !== "" && priority === "") {
+      filterItem("", assigneeName);
+    } else if (assigneeName === "" && priority !== "") {
+      filterItem(priority, "");
     }
   }, [priority, assigneeName]);
 
-  //function to filter based project priority
+  //function to filter based project priority and assigneeName
   const filterItem = (priority, assigneeName) => {
-    const newItem = projects.filter((newVal) => {
-      return (
-        newVal.priority === priority && newVal.assigneeName === assigneeName
-      );
-      // comparing status for displaying data
-    });
+    if (priority && assigneeName) {
+      const newItem = issues.filter((newVal) => {
+        return (
+          newVal.priority === priority && newVal.assigneeName === assigneeName
+        );
+        // comparing status for displaying data
+      });
+      setItem(newItem);
+    } else if (priority && !assigneeName) {
+      const newItem = issues.filter((newVal) => {
+        return newVal.priority === priority;
+
+        // comparing status for displaying data
+      });
+      setItem(newItem);
+    } else if (assigneeName && !priority) {
+      const newItem = issues.filter((newVal) => {
+        return newVal.assigneeName === assigneeName;
+        // comparing status for displaying data
+      });
+      setItem(newItem);
+    }
+  };
+
+  //add project
+  const addProject = () => {
+    var newItem = [
+      ...item,
+      {
+        assigneeName: "Apple",
+        status: "DEVELOPMENT",
+        priority: "HIGH",
+        type: "HIGH",
+      },
+    ];
     setItem(newItem);
   };
 
-  //function to filter based project assignee
-
+  //reset filter
+  const resetFilter = () => {
+    document.getElementById("priorityId").value = "";
+    document.getElementById("assigneeId").value = "";
+    setPriority("");
+    setAssigneeName("");
+    setItem(issues);
+  };
   if (item.length !== 0) {
     return (
       <>
@@ -79,8 +121,8 @@ const ProjectBoard = (props) => {
             <FilterContainer>
               <FilterWrapper>
                 <Label>Filter:</Label>
-                <SelectField onChange={handleFilterChange}>
-                  <option selected value="" disabled>
+                <SelectField id="priorityId" onChange={handleFilterChange}>
+                  <option selected value="">
                     Priority filter
                   </option>
                   <option value="LOW">Low</option>
@@ -88,20 +130,21 @@ const ProjectBoard = (props) => {
                   <option value="HIGH">High</option>
                 </SelectField>
 
-                <SelectField onChange={handleAssigneeChange}>
-                  <option selected value="" disabled>
+                <SelectField id="assigneeId" onChange={handleAssigneeChange}>
+                  <option selected value="">
                     Assignee name filter
                   </option>
                   <option value="Abdul">Abdul</option>
                   <option value="John">John</option>
                   <option value="Rahul">Rahul</option>
-                  <option value="Rahul">Rahul</option>
+                  <option value="Chris">Chris</option>
                   <option value="Salman">Salman</option>
                 </SelectField>
+                <button onClick={resetFilter}>Reset Filter</button>
               </FilterWrapper>
             </FilterContainer>
 
-            <HScrollWrapper>{item.map(displayProject)}</HScrollWrapper>
+            <HScrollWrapper>{item.map(displayIssue)}</HScrollWrapper>
           </ProjectBoardWrapper>
         </ProjectBoardContainer>
       </>
@@ -133,6 +176,7 @@ const ProjectBoard = (props) => {
                   <option value="Rahul">Rahul</option>
                   <option value="Salman">Salman</option>
                 </SelectField>
+                <button onClick={resetFilter}>Reset Filter</button>
               </FilterWrapper>
             </FilterContainer>
             <ImgWrap>

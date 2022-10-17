@@ -22,7 +22,7 @@ const IssueCard = (props) => {
     <>
       <IssueCardContainer>
       <TypeContainer>
-        <DarkText>{props.status}</DarkText>
+        <DarkText>{props.type}</DarkText>
       </TypeContainer>
         <IssueCardWrapper>
           <Row>
@@ -30,11 +30,13 @@ const IssueCard = (props) => {
             <LightText>12/09/2000</LightText>
           </Row>
           <TextWrap>
-            <Heading>Lorem, ipsum dolor.</Heading>
+            <Heading>{props.projectName}</Heading>
             <DarkText>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-              minus consequatur corporis consequuntur.
+              {props.desc}
             </DarkText>
+            <LightText>
+              {props.summary}
+            </LightText>
           </TextWrap>
           <Row>
             <ProfileContainer>
