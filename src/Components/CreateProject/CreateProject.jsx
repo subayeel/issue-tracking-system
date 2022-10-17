@@ -25,7 +25,9 @@ import {
   CreateIssueWrapper,
 } from "../CreateIssue/CreateIssue.elements";
 
-const CreateProject = () => {
+const CreateProject = (props) => {
+  var project = props.project;
+  var setProject = props.setProject;
   const [formValues, setFormValues] = useState({});
   const [formErrors, setFormErrors] = useState({}); //error  state
   const [isSubmit, setIsSubmit] = useState(false);
@@ -43,8 +45,16 @@ const CreateProject = () => {
     setIsSubmit(true);
   };
 
+  //add issue
+  const addProject = ()=>{
+
+    var newProject = [...project,formValues]
+    setProject(newProject)
+  }
+
   useEffect(() => {
-    if (formErrors.length === 0) {
+    if (isSubmit && !formErrors) {
+      addProject()
       navigate("/");
     }
   }, []);

@@ -63,7 +63,7 @@ const CreateIssue = (props) => {
 
     return true;
   };
-    //add project
+    //add issue
     const addIssue = ()=>{
 
       var newItem = [...item,formValues]

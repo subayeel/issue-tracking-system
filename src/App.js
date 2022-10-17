@@ -101,13 +101,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<ProjectBoard item={item} setItem={setItem} />}
+            element={<ProjectBoard project={project} item={item} setItem={setItem} />}
           />
           <Route
             path="/createissue"
             element={<CreateIssue item={item} setItem={setItem} />}
           />
-          <Route path="/createproject" element={<CreateProject />} />
+          <Route path="/createproject" element={<CreateProject project={project} setProject={setProject}/>} />
         </Routes>
         <Outlet />
         <Footer />

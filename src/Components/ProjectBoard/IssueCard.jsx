@@ -2,8 +2,8 @@ import React from "react";
 import Avatar from "../Navbar/Avatar";
 import {
   TextWrap,
-  IssueCardContainer,
-  IssueCardWrapper,
+  CardContainer,
+  CardWrapper,
   Priority,
   PriorityContainer,
   Row,ProfileContainer,Text, LightText, DarkText,Heading,Heading2,TypeContainer
@@ -20,11 +20,11 @@ const IssueCard = (props) => {
   }
   return (
     <>
-      <IssueCardContainer>
+      <CardContainer>
       <TypeContainer>
         <DarkText>{props.type}</DarkText>
       </TypeContainer>
-        <IssueCardWrapper>
+        <CardWrapper>
           <Row>
             <DarkText>id:12312313</DarkText>
             <LightText>12/09/2000</LightText>
@@ -49,8 +49,8 @@ const IssueCard = (props) => {
               <Priority bgcolor={vcolor}>{props.priority}</Priority>
             </PriorityContainer>
           </Row>
-        </IssueCardWrapper>
-      </IssueCardContainer>
+        </CardWrapper>
+      </CardContainer>
     </>
   );
 };

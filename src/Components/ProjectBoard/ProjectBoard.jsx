@@ -16,15 +16,21 @@ import {
   FilterWrapper,
   Label,
   SelectField,
+  Heading2,
 } from "./ProjectBoard.elements";
 
 import { Button } from "../ButtonElement";
 
 import IssueCard from "./IssueCard";
+import { HeadingContainer } from "../CreateIssue/CreateIssue.elements";
+
+import ProjectCard from "./ProjectCard";
 
 const ProjectBoard = (props) => {
   var item = props.item;
   var setItem = props.setItem;
+  var projects = props.project;
+  const [dropDownState, setDropDownState] = useState(false);
 
   function displayIssue(issue) {
     return (
@@ -37,6 +43,18 @@ const ProjectBoard = (props) => {
         desc={issue.desc}
         summary={issue.summary}
       ></IssueCard>
+    );
+  }
+  function displayProject(project) {
+    return (
+      <ProjectCard
+        state={dropDownState}
+        setState={setDropDownState}
+        projectName={project.projectName}
+        ownerName={project.ownerName}
+        startDate={project.startDate}
+        endDate={project.endDate}
+      ></ProjectCard>
     );
   }
 
@@ -145,6 +163,10 @@ const ProjectBoard = (props) => {
             </FilterContainer>
 
             <HScrollWrapper>{item.map(displayIssue)}</HScrollWrapper>
+            <HeadingContainer>
+              <Heading2>Projects</Heading2>
+            </HeadingContainer>
+            <HScrollWrapper>{projects.map(displayProject)}</HScrollWrapper>
           </ProjectBoardWrapper>
         </ProjectBoardContainer>
       </>
@@ -183,7 +205,7 @@ const ProjectBoard = (props) => {
               <Img height="240px" src={noproject} />
             </ImgWrap>
             <TextWrap>
-              <LightLargeText> No Projects Available</LightLargeText>
+              <LightLargeText> No Projects/Issues Available</LightLargeText>
             </TextWrap>
             <Button to="/createproject" round primary>
               {" "}
