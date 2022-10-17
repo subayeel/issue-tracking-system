@@ -25,12 +25,15 @@ import {
   CreateIssueWrapper,
 } from "./CreateIssue.elements";
 
-const CreateIssue = () => {
+const CreateIssue = (props) => {
   const [formValues, setFormValues] = useState({});
   const [formErrors, setFormErrors] = useState({}); //error  state
   const [isSubmit, setIsSubmit] = useState(false);
 
   const navigate = useNavigate();
+
+  const item = props.item
+  const setItem = props.setItem
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,34 +44,30 @@ const CreateIssue = () => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    
   };
 
-  useEffect(() => {
-    if (formErrors.length === 0) {
-      navigate("/");
-    }
-  }, []);
+  
   const isNumberPrime = (number) => {
-    var isPrime = true;
-    if (number > 1) {
-      // looping through 2 to number-1
-      for (let i = 2; i < number / 2; i++) {
-        if (number % i == 0) {
-          isPrime = false;
-          break;
-        }
-      }
-
-      if (isPrime) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
+    // looping through 2 to number-1
+    if (number === 1) {
       return false;
     }
-  };
+    for (let i = 2; i < number; i++) {
+      if (number % i == 0) {
+        return false;
+      }
+    }
 
+    return true;
+  };
+   useEffect(()=>{
+    if(isSubmit && !formErrors){  
+      setItem()
+      navigate("/");
+
+    }
+   })
   const clearInput = () => {
     document.getElementById("summary").value = "";
     document.getElementById("desc").value = "";
@@ -90,7 +89,7 @@ const CreateIssue = () => {
     } else if (values.tags.length > 100) {
       alert("Tags word limit exceeded!");
       errors.tags = "Tags word limit exceeded!";
-    } else if (isNumberPrime(parseInt(values.storyPoint))) {
+    } else if (!isNumberPrime(parseInt(values.storyPoint))) {
       alert("Story point field requires prime number only!");
       errors.storyPoint = "Story point field requires prime number only!";
     }

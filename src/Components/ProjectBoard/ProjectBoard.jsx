@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 //import for image
 import noproject from "../../Images/noproject.svg";
 import { Img, ImgWrap } from "../Global";
+import { projects } from "../../App";
 
 //styled componenets imports
 import {
@@ -21,47 +22,10 @@ import { Button } from "../ButtonElement";
 
 import IssueCard from "./IssueCard";
 
-var projects = [
-  {
-    assigneeName: "Abdul",
-    status: "DEVELOPMENT",
-    priority: "HIGH",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "Rahul",
-    status: "TO DO",
-    priority: "LOW",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "John",
-    status: "TESTING",
-    priority: "HIGH",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "Chris",
-    status: "TESTING",
-    priority: "MEDIUM",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "Salman",
-    status: "COMPLETED",
-    priority: "HIGH",
-    type: "HIGH",
-  },
-  {
-    assigneeName: "Salman",
-    status: "COMPLETED",
-    priority: "LOW",
-    type: "HIGH",
-  },
-];
-
 const ProjectBoard = (props) => {
-  const [item, setItem] = useState(projects);
+  var item = props.item;
+  var setItem = props.setItem;
+
   function displayProject(project) {
     return (
       <IssueCard
@@ -73,51 +37,41 @@ const ProjectBoard = (props) => {
     );
   }
 
+  const [priority, setPriority] = useState("");
+  const [assigneeName, setAssigneeName] = useState("");
+
   //function to handle  priority filter change
   const handleFilterChange = (e) => {
-    const priority = e.target.value;
-    filterItem(priority);
+    const selectedPriority = e.target.value;
+    setPriority(selectedPriority);
   };
-
-  function compare(a, b) {
-    if (a.assigneeName > b.assigneeName) return 1;
-    if (a.assigneeName < b.assigneeName) return -1;
-    return 0;
-  }
 
   //function to handle filter by assignee name
   const handleAssigneeChange = (e) => {
-    var sortOrder = e.target.value;
-    // const assigneeName = [...new Set(projects.map((Val) => Val.name))];
-    if (sortOrder == "ascending") {
-      var sortedAscending = projects.sort(
-        (a, b) => a.assigneeName - b.assigneeName
-      );
-
-      setItem(sortedAscending);
-      console.log("ascending");
-    } else if (sortOrder === "descending") {
-      var sortedDescending = projects.sort(
-        (a, b) => b.assigneeName - a.assigneeName
-      );
-      setItem(sortedDescending);
-    }
+    const selectedAssigneeName = e.target.value;
+    setAssigneeName(selectedAssigneeName);
   };
 
   useEffect(() => {
-    setItem(item);
-  }, [projects]);
+    if (priority !== "" && assigneeName !== "") {
+      filterItem(priority, assigneeName);
+    }
+  }, [priority, assigneeName]);
 
   //function to filter based project priority
-  const filterItem = (priority) => {
+  const filterItem = (priority, assigneeName) => {
     const newItem = projects.filter((newVal) => {
-      return newVal.priority === priority;
+      return (
+        newVal.priority === priority && newVal.assigneeName === assigneeName
+      );
       // comparing status for displaying data
     });
     setItem(newItem);
   };
 
-  if (projects.length !== 0) {
+  //function to filter based project assignee
+
+  if (item.length !== 0) {
     return (
       <>
         <ProjectBoardContainer>
@@ -138,8 +92,11 @@ const ProjectBoard = (props) => {
                   <option selected value="" disabled>
                     Assignee name filter
                   </option>
-                  <option value="ascending">Ascending A-Z</option>
-                  <option value="descending">Descending Z-A</option>
+                  <option value="Abdul">Abdul</option>
+                  <option value="John">John</option>
+                  <option value="Rahul">Rahul</option>
+                  <option value="Rahul">Rahul</option>
+                  <option value="Salman">Salman</option>
                 </SelectField>
               </FilterWrapper>
             </FilterContainer>
@@ -154,6 +111,30 @@ const ProjectBoard = (props) => {
       <>
         <ProjectBoardContainer>
           <ProjectBoardWrapper>
+            <FilterContainer>
+              <FilterWrapper>
+                <Label>Filter:</Label>
+                <SelectField onChange={handleFilterChange}>
+                  <option selected value="" disabled>
+                    Priority filter
+                  </option>
+                  <option value="LOW">Low</option>
+                  <option value="MEDIUM">Medium</option>
+                  <option value="HIGH">High</option>
+                </SelectField>
+
+                <SelectField onChange={handleAssigneeChange}>
+                  <option selected value="" disabled>
+                    Assignee name filter
+                  </option>
+                  <option value="Abdul">Abdul</option>
+                  <option value="John">John</option>
+                  <option value="Rahul">Rahul</option>
+                  <option value="Rahul">Rahul</option>
+                  <option value="Salman">Salman</option>
+                </SelectField>
+              </FilterWrapper>
+            </FilterContainer>
             <ImgWrap>
               <Img height="240px" src={noproject} />
             </ImgWrap>
@@ -164,7 +145,6 @@ const ProjectBoard = (props) => {
               {" "}
               Create Project
             </Button>
-            
           </ProjectBoardWrapper>
         </ProjectBoardContainer>
       </>
