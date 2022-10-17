@@ -27,6 +27,12 @@ export const projects = [
     startDate: "12/09/2022",
     endDate: "12/18/2022",
   },
+  {
+    projectName: "NodeJs",
+    ownerName: "Abdul",
+    startDate: "12/09/2022",
+    endDate: "12/18/2022",
+  },
 ];
 export const issues = [
   {

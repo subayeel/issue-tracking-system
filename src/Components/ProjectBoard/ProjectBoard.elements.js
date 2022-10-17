@@ -7,7 +7,7 @@ export const ProjectBoardContainer = styled.div`
 `;
 
 export const ProjectBoardWrapper = styled(CenterFlexContainer)`
-  height: 90vh;
+  min-height: 90vh;
   justify-content: start;
   flex-direction: column;
 `;
@@ -21,36 +21,37 @@ export const LightText = styled.h3`
   color: #b2b2b2;
   font-size: 14px;
   margin: 0;
-  
+
   font-weight: 500;
 `;
 
 export const LightLargeText = styled.h3`
-color: #b2b2b2;
-font-size: 18px;
-margin: 0;
-text-align: center;
-font-weight: 600;
+  color: #b2b2b2;
+  font-size: 18px;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
 `;
 export const DarkText = styled.h3`
   color: #3c4048;
-  margin:0;
+  margin: 0;
   font-size: 14px;
   font-weight: 500;
 `;
 
 export const CardContainer = styled.div`
   max-width: 1140px;
-  
+  display: inline-block;
   margin: 14px;
 `;
 export const CardWrapper = styled(CenterFlexContainer)`
   flex-direction: column;
+
   padding: 7px;
   width: 320px;
   border-radius: 7px;
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.19), 0 4px 4px rgba(0, 0, 0, 0.13);
-  @media screen and (max-width:768px){
+  @media screen and (max-width: 768px) {
     width: 280px;
   }
 `;
@@ -73,9 +74,7 @@ export const Priority = styled(CenterFlexContainer)`
   font-weight: 500;
 `;
 
-export const ProfileContainer = styled(CenterFlexContainer)`
-  
-`;
+export const ProfileContainer = styled(CenterFlexContainer)``;
 export const Text = styled.h3`
   font-size: 12px;
   font-weight: 500;
@@ -87,7 +86,6 @@ export const Heading = styled.p`
   font-weight: 600;
   margin: 0;
   color: #3c4048;
-  
 `;
 
 export const Heading2 = styled.p`
@@ -95,36 +93,30 @@ export const Heading2 = styled.p`
   font-weight: 500;
   margin: 0 0 0 14px;
   color: #3c4048;
-  
 `;
 
 export const TypeContainer = styled.div`
-width: 100%;
-margin-bottom: 14px;
-`
-
-
+  width: 100%;
+  margin-bottom: 14px;
+`;
 
 export const HScrollWrapper = styled.div`
-height:300px;
-  overflow: auto;
-  
+  max-width: 1140px;
+  min-height: 450px;
 
   > div {
     display: inline-block;
-    
   }
 `;
 
 export const FilterContainer = styled.div`
-width: 100%;
-justify-content: space-around;
-
-`
+  width: 100%;
+  justify-content: space-around;
+`;
 
 export const FilterWrapper = styled.div`
-justify-content: right;
-`
+  justify-content: right;
+`;
 
 export const Label = styled.label`
   width: 100%;
@@ -135,7 +127,7 @@ export const Label = styled.label`
 `;
 
 export const SelectField = styled.select`
-  width:20%;
+  width: 20%;
 
   padding: 12px 14px;
   margin: 8px 7px;
@@ -172,7 +164,6 @@ export const FieldContainer = styled.div`
     align-items: flex-start;
   }
 `;
-
 
 export const StyledDrawer = styled.div`
   background-color: ${(props) => props.bgcolor};
@@ -225,5 +216,3 @@ export const DrawerContent = styled.div`
     width: 300px;
   }
 `;
-
-

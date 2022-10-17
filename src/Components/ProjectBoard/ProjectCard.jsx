@@ -10,6 +10,9 @@ import {
   Row,
   ProfileContainer,
   Heading2,
+  CardContainer,
+  CardWrapper,
+  LightLargeText,
 } from "./ProjectBoard.elements";
 
 import Avatar from "../Navbar/Avatar";
@@ -19,14 +22,10 @@ const ProjectCard = (props) => {
   var setState = props.setState;
   return (
     <>
-      <StyledDrawer>
-        <DrawerButton
-          radius={props.state ? "7px 7px 0 0" : "7px"}
-          onClick={() => setState(!state)}
-        >
-          <DrawerQuestion>{props.projectName}</DrawerQuestion>
-        </DrawerButton>
-        <DrawerContent height={props.state ? "200px" : "0px"}>
+      <CardContainer>
+        <CardWrapper>
+          <LightLargeText>{props.projectName}</LightLargeText>
+
           <LightText>Start Date:{props.startDate}</LightText>
           <DarkText>End Date:{props.endDate}</DarkText>
           <TextWrap>
@@ -43,8 +42,8 @@ const ProjectCard = (props) => {
               <Heading2> {props.ownerName}</Heading2>
             </ProfileContainer>
           </Row>
-        </DrawerContent>
-      </StyledDrawer>
+        </CardWrapper>
+      </CardContainer>
     </>
   );
 };
