@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.fc18b379.js",
-    "static/media/noproject.svg": "/static/media/noproject.db56afb13ff8ab826cbcceedf0031ad2.svg",
-    "index.html": "/index.html",
-    "main.fc18b379.js.map": "/static/js/main.fc18b379.js.map"
+    "main.js": "/issue-tracking-system/static/js/main.95a89e04.js",
+    "static/media/noproject.svg": "/issue-tracking-system/static/media/noproject.db56afb13ff8ab826cbcceedf0031ad2.svg",
+    "index.html": "/issue-tracking-system/index.html",
+    "main.95a89e04.js.map": "/issue-tracking-system/static/js/main.95a89e04.js.map"
   },
   "entrypoints": [
-    "static/js/main.fc18b379.js"
+    "static/js/main.95a89e04.js"
   ]
 }
