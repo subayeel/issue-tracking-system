@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/static/js/main.fc18b379.js",
+    "static/media/noproject.svg": "/static/media/noproject.db56afb13ff8ab826cbcceedf0031ad2.svg",
+    "index.html": "/index.html",
+    "main.fc18b379.js.map": "/static/js/main.fc18b379.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.fc18b379.js"
+  ]
+}
