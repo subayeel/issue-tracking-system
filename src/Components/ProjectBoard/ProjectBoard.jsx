@@ -62,9 +62,12 @@ const ProjectBoard = (props) => {
     );
   }
 
-  //filter according to summary and descreption of projects 
+  //filter according to summary and descreption of projects
   const filteredItems = issues.filter((item) => {
-    return item.summary.toLowerCase().includes(query.toLowerCase()) || item.desc.toLowerCase().includes(query.toLowerCase());
+    return (
+      item.summary.toLowerCase().includes(query.toLowerCase()) ||
+      item.desc.toLowerCase().includes(query.toLowerCase())
+    );
   });
 
   const [priority, setPriority] = useState("");
@@ -89,13 +92,12 @@ const ProjectBoard = (props) => {
       filterItem("", assigneeName);
     } else if (assigneeName === "" && priority !== "") {
       filterItem(priority, "");
-    } 
-    
+    }
   }, [priority, assigneeName]);
 
-  useEffect(()=>{
-    setItem(filteredItems)
-  },[query])
+  useEffect(() => {
+    setItem(filteredItems);
+  }, [query]);
 
   //function to filter based project priority and assigneeName
   const filterItem = (priority, assigneeName) => {
@@ -141,6 +143,8 @@ const ProjectBoard = (props) => {
   const resetFilter = () => {
     document.getElementById("priorityId").value = "";
     document.getElementById("assigneeId").value = "";
+    document.getElementById("searchBar").value = "";
+    setQuery("")
     setPriority("");
     setAssigneeName("");
     setItem(issues);
@@ -172,12 +176,15 @@ const ProjectBoard = (props) => {
                   <option value="Chris">Chris</option>
                   <option value="Salman">Salman</option>
                 </SelectField>
-                <Button margin="7px 28px" onClick={resetFilter}>Reset Filter</Button>
+                <Button margin="7px 28px" onClick={resetFilter}>
+                  Reset Filter
+                </Button>
               </FilterWrapper>
             </FilterContainer>
-            
+
             <SearchBarWrap>
               <SearchBar
+                id="searchBar"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -224,6 +231,7 @@ const ProjectBoard = (props) => {
             </FilterContainer>
             <SearchBarWrap>
               <SearchBar
+                id="searchBar"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
