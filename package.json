@@ -2,7 +2,7 @@
   "name": "issue-tracking-system",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://subayeel.github.io/issue-tracking-system/",
+  "homepage":"https://subayeel.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
