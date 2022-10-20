@@ -105,6 +105,10 @@ function App() {
         <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar isOpen={isOpen} toggle={toggle} />
         <Routes>
+        <Route
+            path="/issue-tracking-system"
+            element={<ProjectBoard project={project} item={item} setItem={setItem} />}
+          />
           <Route
             path="/"
             element={<ProjectBoard project={project} item={item} setItem={setItem} />}
