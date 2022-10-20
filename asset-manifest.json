@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.js": "/issue-tracking-system/static/js/main.95a89e04.js",
-    "static/media/noproject.svg": "/issue-tracking-system/static/media/noproject.db56afb13ff8ab826cbcceedf0031ad2.svg",
-    "index.html": "/issue-tracking-system/index.html",
-    "main.95a89e04.js.map": "/issue-tracking-system/static/js/main.95a89e04.js.map"
+    "main.js": "/static/js/main.4d74c5b3.js",
+    "static/media/taskcomplete.svg": "/static/media/taskcomplete.a02ecc89b9e59ed87484819e2473705f.svg",
+    "static/media/noproject.svg": "/static/media/noproject.db56afb13ff8ab826cbcceedf0031ad2.svg",
+    "index.html": "/index.html",
+    "main.4d74c5b3.js.map": "/static/js/main.4d74c5b3.js.map"
   },
   "entrypoints": [
-    "static/js/main.95a89e04.js"
+    "static/js/main.4d74c5b3.js"
   ]
 }
