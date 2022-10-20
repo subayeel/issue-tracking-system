@@ -47,7 +47,7 @@ export const issues = [
   },
   {
     assigneeName: "Abdul",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
+    desc: "This node project created using npx create react app.dads Sint, nam maxime?",
     issueType: "TASK",
     priority: "LOW",
     projectName: "nodeProject",
@@ -60,9 +60,9 @@ export const issues = [
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
     issueType: "BUG",
     priority: "MEDIUM",
-    projectName: "nodeProject",
+    projectName: "addProject",
     storyPoint: "3",
-    summary: "Lorem, ipsum dolor sit amet consectetur adipi",
+    summary: "This is a medium level issue",
     tags: "#urgent #diy",
   },
   {

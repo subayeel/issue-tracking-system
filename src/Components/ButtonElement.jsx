@@ -23,4 +23,7 @@ export const Button = styled(Link)`
     transition: all 0.2s ease-in-out;
     background: ${({ primary }) => (primary ? "#00ABB3" : "#EC9123")};
   }
+  @media screen and (min-width:768px){
+    max-width:120px;
+  }
 `;

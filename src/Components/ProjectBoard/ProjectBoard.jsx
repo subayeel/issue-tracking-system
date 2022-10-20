@@ -61,8 +61,10 @@ const ProjectBoard = (props) => {
       ></ProjectCard>
     );
   }
+
+  //filter according to summary and descreption of projects 
   const filteredItems = issues.filter((item) => {
-    return item.summary.toLowerCase().includes(query.toLowerCase());
+    return item.summary.toLowerCase().includes(query.toLowerCase()) || item.desc.toLowerCase().includes(query.toLowerCase());
   });
 
   const [priority, setPriority] = useState("");
@@ -87,8 +89,13 @@ const ProjectBoard = (props) => {
       filterItem("", assigneeName);
     } else if (assigneeName === "" && priority !== "") {
       filterItem(priority, "");
-    }
+    } 
+    
   }, [priority, assigneeName]);
+
+  useEffect(()=>{
+    setItem(filteredItems)
+  },[query])
 
   //function to filter based project priority and assigneeName
   const filterItem = (priority, assigneeName) => {
@@ -176,7 +183,7 @@ const ProjectBoard = (props) => {
               />
             </SearchBarWrap>
 
-            <HScrollWrapper>{filteredItems.map(displayIssue)}</HScrollWrapper>
+            <HScrollWrapper>{item.map(displayIssue)}</HScrollWrapper>
             <HeadingContainer>
               <Heading2>Projects</Heading2>
             </HeadingContainer>
@@ -212,9 +219,15 @@ const ProjectBoard = (props) => {
                   <option value="Rahul">Rahul</option>
                   <option value="Salman">Salman</option>
                 </SelectField>
-                <button onClick={resetFilter}>Reset Filter</button>
+                <Button onClick={resetFilter}>Reset Filter</Button>
               </FilterWrapper>
             </FilterContainer>
+            <SearchBarWrap>
+              <SearchBar
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </SearchBarWrap>
             <ImgWrap>
               <Img height="240px" src={noproject} />
             </ImgWrap>
