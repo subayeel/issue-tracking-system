@@ -116,6 +116,11 @@ export const FilterContainer = styled.div`
 
 export const FilterWrapper = styled.div`
   justify-content: right;
+  
+  @media screen and (max-width:768px){
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Label = styled.label`
@@ -123,11 +128,12 @@ export const Label = styled.label`
   color: #2c2c2c;
   font-size: 14px;
   font-weight: 600;
+  margin: 8px 7px;
   margin-right: 24px;
 `;
 
 export const SelectField = styled.select`
-  width: 20%;
+  
 
   padding: 12px 14px;
   margin: 8px 7px;
@@ -216,3 +222,40 @@ export const DrawerContent = styled.div`
     width: 300px;
   }
 `;
+
+
+export const SearchBarWrap = styled.div`
+  width: 100%;
+  max-width: 550px;
+  margin: 14px auto;
+  
+  display: flex;
+  justify-content: center;
+`;
+export const SearchBar = styled.input.attrs({
+  type: "text",
+  placeholder: "Search Issues",
+})`
+  cursor: pointer;
+
+  color: #707070;
+  width: 100%;
+  height: 50px;
+  border: none;
+  
+
+  box-shadow: 0px 0px 10px;
+  padding: 0 10px 0 10px;
+  transition: 0.15s;
+
+  display: block;
+
+  @media (max-width: 900px) {
+    width: 280px;
+    height: 40px;
+    margin: 0 5px 0 5px;
+    padding: 0 20px 0 20px;
+  }
+`;
+
+

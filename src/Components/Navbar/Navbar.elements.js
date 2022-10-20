@@ -151,4 +151,3 @@ object-fit:cover;
 export const Img = styled.img`
 width: 100%;
 `
-

@@ -19,7 +19,7 @@ justify-content: center;
 
 export const ImgWrap = styled(CenterFlexContainer)`
 overflow: hidden;
-
+margin-top:14px;
 `
 
 export const Img = styled.img`

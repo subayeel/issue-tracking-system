@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 
 import {
   Nav,
@@ -6,7 +6,7 @@ import {
   MobileIcon,
   NavMenu,
   NavItem,
-  NavbarContainer, 
+  NavbarContainer,
   NavLinks,
   NavBtn,
   NavBtnLink,
@@ -16,40 +16,35 @@ import Avatar from "./Avatar";
 
 import { FaBars, FaRegWindowClose } from "react-icons/fa";
 
-function Navbar({toggle,isOpen}) {
+function Navbar({ toggle, isOpen }) {
+  
+
+  
   return (
     <Nav>
       <NavbarContainer>
-      
         <MobileIcon onClick={toggle}>
-          {isOpen ?<FaRegWindowClose/>:<FaBars/>}
+          {isOpen ? <FaRegWindowClose /> : <FaBars />}
         </MobileIcon>
-      
-      
-        <NavLogo to="/"> 
+
+        <NavLogo to="/">
           <img
             src="https://seeklogo.com/images/I/its-logo-D8F21DA8FE-seeklogo.com.png"
             alt=""
           />
         </NavLogo>
         
+
         <NavMenu>
           <NavItem>
-            <NavLinks to="/">
-              Home
-            </NavLinks>
+            <NavLinks to="/">Home</NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="/createissue">
-              Create Issue
-            </NavLinks>
+            <NavLinks to="/createissue">Create Issue</NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to="/createproject">
-              Create Project
-            </NavLinks>
+            <NavLinks to="/createproject">Create Project</NavLinks>
           </NavItem>
-          
         </NavMenu>
         <Avatar></Avatar>
       </NavbarContainer>

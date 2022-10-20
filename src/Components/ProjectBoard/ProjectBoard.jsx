@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //import for image
 import noproject from "../../Images/noproject.svg";
+import taskcomplete from "../../Images/taskcomplete.svg";
 import { Img, ImgWrap } from "../Global";
 import { issues } from "../../App";
 
@@ -17,6 +18,8 @@ import {
   Label,
   SelectField,
   Heading2,
+  SearchBar,
+  SearchBarWrap,
 } from "./ProjectBoard.elements";
 
 import { Button } from "../ButtonElement";
@@ -31,6 +34,7 @@ const ProjectBoard = (props) => {
   var setItem = props.setItem;
   var projects = props.project;
   const [dropDownState, setDropDownState] = useState(false);
+  const [query, setQuery] = useState("");
 
   function displayIssue(issue) {
     return (
@@ -57,6 +61,9 @@ const ProjectBoard = (props) => {
       ></ProjectCard>
     );
   }
+  const filteredItems = issues.filter((item) => {
+    return item.summary.toLowerCase().includes(query.toLowerCase());
+  });
 
   const [priority, setPriority] = useState("");
   const [assigneeName, setAssigneeName] = useState("");
@@ -158,11 +165,18 @@ const ProjectBoard = (props) => {
                   <option value="Chris">Chris</option>
                   <option value="Salman">Salman</option>
                 </SelectField>
-                <button onClick={resetFilter}>Reset Filter</button>
+                <Button margin="7px 28px" onClick={resetFilter}>Reset Filter</Button>
               </FilterWrapper>
             </FilterContainer>
+            
+            <SearchBarWrap>
+              <SearchBar
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </SearchBarWrap>
 
-            <HScrollWrapper>{item.map(displayIssue)}</HScrollWrapper>
+            <HScrollWrapper>{filteredItems.map(displayIssue)}</HScrollWrapper>
             <HeadingContainer>
               <Heading2>Projects</Heading2>
             </HeadingContainer>
