@@ -8,8 +8,13 @@ export const ProjectBoardContainer = styled.div`
 
 export const ProjectBoardWrapper = styled(CenterFlexContainer)`
   min-height: 90vh;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
+  
+  @media screen and (max-width:768px){
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const TextWrap = styled.div`
@@ -101,11 +106,12 @@ export const TypeContainer = styled.div`
 `;
 
 export const HScrollWrapper = styled.div`
-  max-width: 1140px;
+  
   min-height: 450px;
 
-  > div {
-    display: inline-block;
+  @media screen and (max-width:769px){
+    display: flex;
+    flex-direction: column;
   }
 `;
 
