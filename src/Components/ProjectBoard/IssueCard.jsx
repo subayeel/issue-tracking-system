@@ -55,12 +55,12 @@ const IssueCard = (props) => {
 
   const currentCard = issues[props.id];
 
-  async function updateCard() {
+   function updateCard() {
     // var nu = issues.filter(key===props.key)
-    currentCard.type = document.getElementById("type").value;
+    currentCard.issueType = document.getElementById("type").value;
     currentCard.summary = document.getElementById("summary").value;
     currentCard.assigneeName = document.getElementById("assigneeName").value;
-    await setIssues(issues);
+     setIssues([...issues]);
     setModal(false);
     console.log(issues);
   }
@@ -83,7 +83,14 @@ const IssueCard = (props) => {
           placeholder="Assignee Name"
           type="text"
         ></input>
-        <button onClick={()=>{updateCard()}}> Update</button>
+        <button
+          onClick={() => {
+            updateCard();
+          }}
+        >
+          {" "}
+          Update
+        </button>
       </Modal>
       <CardContainer onClick={openModal}>
         <TypeContainer>
