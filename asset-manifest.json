@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/issue-tracking-system/static/js/main.1b9090df.js",
+    "main.js": "/issue-tracking-system/static/js/main.e9146067.js",
     "static/media/taskcomplete.svg": "/issue-tracking-system/static/media/taskcomplete.a02ecc89b9e59ed87484819e2473705f.svg",
     "static/media/noproject.svg": "/issue-tracking-system/static/media/noproject.db56afb13ff8ab826cbcceedf0031ad2.svg",
     "index.html": "/issue-tracking-system/index.html",
-    "main.1b9090df.js.map": "/issue-tracking-system/static/js/main.1b9090df.js.map"
+    "main.e9146067.js.map": "/issue-tracking-system/static/js/main.e9146067.js.map"
   },
   "entrypoints": [
-    "static/js/main.1b9090df.js"
+    "static/js/main.e9146067.js"
   ]
 }
