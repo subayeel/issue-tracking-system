@@ -117,7 +117,7 @@ export const HScrollWrapper = styled.div`
 
 export const FilterContainer = styled.div`
   width: 100%;
-  justify-content: space-around;
+  
 `;
 
 export const FilterWrapper = styled.div`

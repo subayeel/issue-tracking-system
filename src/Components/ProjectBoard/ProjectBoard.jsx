@@ -5,6 +5,7 @@ import noproject from "../../Images/noproject.svg";
 import taskcomplete from "../../Images/taskcomplete.svg";
 import { Img, ImgWrap } from "../Global";
 import { issues } from "../../App";
+import Modal from "react-modal";
 
 //styled componenets imports
 import {
@@ -36,9 +37,34 @@ const ProjectBoard = (props) => {
   const [dropDownState, setDropDownState] = useState(false);
   const [query, setQuery] = useState("");
 
+  const [newIssues, setNewIssues] = useState(issues);
+
+  //modal state
+  const [modalState, setModal] = useState(false);
+
+  //modal functions
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+
   function displayIssue(issue) {
     return (
       <IssueCard
+        id={issue.id}
         projectName={issue.projectName}
         assigneeName={issue.assigneeName}
         status={issue.status}
@@ -46,6 +72,9 @@ const ProjectBoard = (props) => {
         type={issue.issueType}
         desc={issue.desc}
         summary={issue.summary}
+        setModal={setModal}
+        issues={newIssues}
+        setIssues={setNewIssues}
       ></IssueCard>
     );
   }
@@ -63,7 +92,7 @@ const ProjectBoard = (props) => {
   }
 
   //filter according to summary and descreption of projects
-  const filteredItems = issues.filter((item) => {
+  const filteredItems = newIssues.filter((item) => {
     return (
       item.summary.toLowerCase().includes(query.toLowerCase()) ||
       item.desc.toLowerCase().includes(query.toLowerCase())
@@ -99,10 +128,14 @@ const ProjectBoard = (props) => {
     setItem(filteredItems);
   }, [query]);
 
+  useEffect(() => {
+    setNewIssues(newIssues);
+  }, [newIssues]);
+
   //function to filter based project priority and assigneeName
   const filterItem = (priority, assigneeName) => {
     if (priority && assigneeName) {
-      const newItem = issues.filter((newVal) => {
+      const newItem = newIssues.filter((newVal) => {
         return (
           newVal.priority === priority && newVal.assigneeName === assigneeName
         );
@@ -110,14 +143,14 @@ const ProjectBoard = (props) => {
       });
       setItem(newItem);
     } else if (priority && !assigneeName) {
-      const newItem = issues.filter((newVal) => {
+      const newItem = newIssues.filter((newVal) => {
         return newVal.priority === priority;
 
         // comparing status for displaying data
       });
       setItem(newItem);
     } else if (assigneeName && !priority) {
-      const newItem = issues.filter((newVal) => {
+      const newItem = newIssues.filter((newVal) => {
         return newVal.assigneeName === assigneeName;
         // comparing status for displaying data
       });
@@ -144,10 +177,10 @@ const ProjectBoard = (props) => {
     document.getElementById("priorityId").value = "";
     document.getElementById("assigneeId").value = "";
     document.getElementById("searchBar").value = "";
-    setQuery("")
+    setQuery("");
     setPriority("");
     setAssigneeName("");
-    setItem(issues);
+    setItem(newIssues);
   };
   if (item.length !== 0) {
     return (
@@ -176,11 +209,13 @@ const ProjectBoard = (props) => {
                   <option value="Chris">Chris</option>
                   <option value="Salman">Salman</option>
                 </SelectField>
-                <Button margin="7px 28px" onClick={resetFilter}>
-                  Reset Filter
-                </Button>
               </FilterWrapper>
+              <Button onClick={resetFilter}>Reset Filter</Button>
             </FilterContainer>
+
+            <ImgWrap>
+              <Img height="240px" src={taskcomplete} />
+            </ImgWrap>
 
             <SearchBarWrap>
               <SearchBar
@@ -190,7 +225,7 @@ const ProjectBoard = (props) => {
               />
             </SearchBarWrap>
 
-            <HScrollWrapper>{item.map(displayIssue)}</HScrollWrapper>
+            <HScrollWrapper>{newIssues.map(displayIssue)}</HScrollWrapper>
             <HeadingContainer>
               <Heading2>Projects</Heading2>
             </HeadingContainer>

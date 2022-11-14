@@ -36,6 +36,7 @@ export const projects = [
 ];
 export const issues = [
   {
+    id:0,
     assigneeName: "John",
     desc: "asdasdad",
     issueType: "TASK",
@@ -46,6 +47,7 @@ export const issues = [
     tags: "#urgent #diy",
   },
   {
+    id:1,
     assigneeName: "Abdul",
     desc: "This node project created using npx create react app.dads Sint, nam maxime?",
     issueType: "TASK",
@@ -56,6 +58,7 @@ export const issues = [
     tags: "#urgent #diy",
   },
   {
+    id:3,
     assigneeName: "Rahul",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
     issueType: "BUG",
@@ -66,6 +69,7 @@ export const issues = [
     tags: "#urgent #diy",
   },
   {
+    id:4,
     assigneeName: "Chris",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, mollitia? Sint, nam maxime?",
     issueType: "TASK",
